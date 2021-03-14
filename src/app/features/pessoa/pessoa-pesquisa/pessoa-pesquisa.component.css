@@ -1,0 +1,28 @@
+.toolbar {
+  height: 10%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.toolbar-button-container {
+  height: 100%;
+  margin: 2% 10%;
+}
+
+.table-container {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+
+.table-container > table {
+  width: 100%;
+}
+
+.row-button-container {
+  display: flex;
+}
+
+.row-button-container > button {
+  margin-right: 10px;
+}
