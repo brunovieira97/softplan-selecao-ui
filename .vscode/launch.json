@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Chrome (localhost:4200)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+
+      "preLaunchTask": "serve"
+    },
+    {
+      "name": "Edge (localhost:4200)",
+
+      "type": "edge",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+
+      "preLaunchTask": "serve"
+    }
+  ]
+}
