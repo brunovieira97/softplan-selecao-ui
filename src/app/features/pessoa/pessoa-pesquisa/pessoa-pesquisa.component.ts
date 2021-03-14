@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Pessoa } from '../model/pessoa.model';
 import { PessoaService } from '../service/pessoa.service';
 
@@ -8,10 +8,10 @@ import { PessoaService } from '../service/pessoa.service';
   templateUrl: './pessoa-pesquisa.component.html',
   styleUrls: ['./pessoa-pesquisa.component.css'],
 })
-export class PessoaPesquisaComponent implements OnInit, OnDestroy {
+export class PessoaPesquisaComponent implements OnInit {
+  public urlEdit: string = `${environment.apiPath}/pessoas/`;
   public pessoas: Array<Pessoa> = new Array<Pessoa>();
-
-  public tableColumns = ['id', 'nome', 'cpf', 'actions'];
+  public tableColumns = ['id', 'nome', 'cpf', 'email', 'actions'];
 
   constructor(private pessoaService: PessoaService) {}
 
@@ -19,12 +19,13 @@ export class PessoaPesquisaComponent implements OnInit, OnDestroy {
     this.findPessoas();
   }
 
-  public ngOnDestroy(): void {}
+  public edit(id: number): void {}
+
+  public delete(id: number): void {}
 
   private findPessoas(): void {
     this.pessoaService.findAll().subscribe((res) => {
       this.pessoas = res;
-      console.log(this.pessoas[0].id);
     });
   }
 }
