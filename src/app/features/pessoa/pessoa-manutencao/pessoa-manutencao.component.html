@@ -1,0 +1,118 @@
+<div class="form-container" *ngIf="this.pessoa">
+  <form [formGroup]="formGroup">
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('nome') as control"
+    >
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('sexo') as control"
+    >
+      <mat-label>Sexo</mat-label>
+      <mat-select formControlName="sexo">
+        <mat-option>Selecione</mat-option>
+        <mat-option value="F">Feminino</mat-option>
+        <mat-option value="M">Masculino</mat-option>
+      </mat-select>
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('email') as control"
+    >
+      <mat-label>E-Mail</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('dataNascimento') as control"
+    >
+      <mat-label>Data de Nascimento</mat-label>
+      <input
+        matInput
+        formControlName="dataNascimento"
+        [matDatepicker]="datePicker"
+        readonly
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('naturalidade') as control"
+    >
+      <mat-label>Naturalidade</mat-label>
+      <input matInput formControlName="naturalidade" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('nacionalidade') as control"
+    >
+      <mat-label>Nacionalidade</mat-label>
+      <input matInput formControlName="nacionalidade" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('cpf') as control"
+    >
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf" mask="000.000.000-00" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-button-container">
+    <button
+      class="button-left"
+      mat-stroked-button
+      color="basic"
+      (click)="this.goToListPage()"
+    >
+      <span>Voltar</span>
+    </button>
+    <button
+      class="button-right"
+      mat-flat-button
+      color="primary"
+      (click)="this.save()"
+      [disabled]="
+        this.formGroup.errors || this.formGroup.invalid ? true : false
+      "
+    >
+      <span>Salvar</span>
+    </button>
+  </div>
+</div>
