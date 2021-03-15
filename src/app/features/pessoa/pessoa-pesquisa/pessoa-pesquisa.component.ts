@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 import { Pessoa } from '../model/pessoa.model';
 import { PessoaService } from '../service/pessoa.service';
 
@@ -9,19 +9,30 @@ import { PessoaService } from '../service/pessoa.service';
   styleUrls: ['./pessoa-pesquisa.component.css'],
 })
 export class PessoaPesquisaComponent implements OnInit {
-  public urlEdit: string = `${environment.apiPath}/pessoas/`;
   public pessoas: Array<Pessoa> = new Array<Pessoa>();
-  public tableColumns = ['id', 'nome', 'cpf', 'email', 'actions'];
+  public tableColumns = ['id', 'nome', 'cpf', 'actions'];
 
-  constructor(private pessoaService: PessoaService) {}
+  constructor(private router: Router, private pessoaService: PessoaService) {}
 
   public ngOnInit(): void {
     this.findPessoas();
   }
 
-  public edit(id: number): void {}
+  public include(): void {
+    this.router.navigate(['/pessoas/new']);
+  }
 
-  public delete(id: number): void {}
+  public edit(id: number): void {
+    this.router.navigate([`/pessoas/${id}`]);
+  }
+
+  public delete(id: number): void {
+    this.pessoaService.findById(id).subscribe((pessoa) => {
+      this.pessoaService.delete(pessoa).subscribe(() => {
+        this.findPessoas();
+      });
+    });
+  }
 
   private findPessoas(): void {
     this.pessoaService.findAll().subscribe((res) => {

@@ -1,12 +1,12 @@
 export interface Pessoa {
   id?: number;
-  nome: string;
+  nome?: string;
   sexo?: string;
   email?: string;
-  dataNascimento: Date;
+  dataNascimento?: Date;
   naturalidade?: string;
   nacionalidade?: string;
-  cpf: string;
+  cpf?: string;
   dataCriacao?: Date;
   dataAtualizacao?: Date;
 }
