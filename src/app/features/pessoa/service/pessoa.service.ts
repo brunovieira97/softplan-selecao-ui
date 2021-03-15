@@ -34,24 +34,26 @@ export class PessoaService {
       .pipe(catchError(this.handleError));
   }
 
-  public update(pessoa: Pessoa): void {
+  public update(pessoa: Pessoa): Observable<void> {
     if (!pessoa.id) {
       throw new Error('Pessoa sem ID não pode ser atualizada!');
     }
 
     const url = `${this.serviceBaseUrl}/${pessoa.id}`;
 
-    this.http.put<Pessoa>(url, pessoa).pipe(catchError(this.handleError));
+    return this.http
+      .put<Pessoa>(url, pessoa)
+      .pipe(catchError(this.handleError));
   }
 
-  public delete(pessoa: Pessoa): void {
+  public delete(pessoa: Pessoa): Observable<void> {
     if (!pessoa.id) {
       throw new Error('Pessoa sem ID não pode ser excluída!');
     }
 
     const url = `${this.serviceBaseUrl}/${pessoa.id}`;
 
-    this.http.delete<Pessoa>(url).pipe(catchError(this.handleError));
+    return this.http.delete<Pessoa>(url).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse): ObservableInput<any> {
@@ -63,7 +65,7 @@ export class PessoaService {
       errorMessage = `ERROR ${error.status}: ${error.message}`;
     }
 
-    console.error(errorMessage);
+    console.log(errorMessage);
 
     return throwError(errorMessage);
   }
