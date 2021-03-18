@@ -92,6 +92,17 @@
         {{ control.errors | inputError }}
       </mat-error>
     </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('endereco') as control"
+    >
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="endereco" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
   </form>
 </div>
 

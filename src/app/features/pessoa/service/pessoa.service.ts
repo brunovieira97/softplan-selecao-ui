@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PessoaService {
-  private serviceBaseUrl = `${environment.apiPath}/pessoas`;
+  private serviceBaseUrl = `${environment.apiPath}/v2/pessoas`;
 
   constructor(private http: HttpClient) {}
 
