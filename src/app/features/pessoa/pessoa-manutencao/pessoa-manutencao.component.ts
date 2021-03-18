@@ -53,6 +53,8 @@ export class PessoaManutencaoComponent implements OnInit {
   public save(): void {
     this.pessoa = { ...this.pessoa, ...this.formGroup.value };
 
+    if (this.pessoa.sexo === '') this.pessoa.sexo = undefined;
+
     if (this.id) {
       this.update();
     } else {
