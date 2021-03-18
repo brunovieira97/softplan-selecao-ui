@@ -5,7 +5,7 @@
 }
 
 .toolbar-button-container {
-  margin: 2% 30%;
+  margin: 20px;
   display: flex;
   justify-content: space-between;
 }

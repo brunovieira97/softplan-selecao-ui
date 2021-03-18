@@ -1,0 +1,38 @@
+<div class="form-container">
+  <form [formGroup]="formGroup">
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('username') as control"
+    >
+      <mat-label>Usuário</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="formGroup.get('password') as control"
+    >
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="control.errors">
+        {{ control.errors | inputError }}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="this.doLogin()"
+        [disabled]="
+          this.formGroup.errors || this.formGroup.invalid ? true : false
+        "
+      >
+        <span>Login</span>
+      </button>
+    </div>
+  </form>
+</div>

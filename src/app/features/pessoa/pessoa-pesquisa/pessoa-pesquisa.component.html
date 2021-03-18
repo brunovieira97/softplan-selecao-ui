@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="toolbar">
   <div class="toolbar-button-container">
     <button mat-flat-button color="primary" (click)="this.include()">
@@ -10,10 +12,10 @@
   <ng-container *ngIf="pessoas.length > 0">
     <table mat-table [dataSource]="pessoas">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>
+        <th class="column-75" mat-header-cell *matHeaderCellDef>
           <span>ID</span>
         </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell class="column-75" *matCellDef="let element">
           <div>
             <span>{{ element.id }}</span>
           </div>
@@ -32,10 +34,10 @@
       </ng-container>
 
       <ng-container matColumnDef="cpf">
-        <th mat-header-cell *matHeaderCellDef>
+        <th mat-header-cell class="column-250 align-right" *matHeaderCellDef>
           <span>CPF</span>
         </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell class="column-250 align-right" *matCellDef="let element">
           <div>
             <span>{{ element.cpf | cpfMask }}</span>
           </div>
@@ -43,10 +45,10 @@
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>
+        <th mat-header-cell class="column-150 align-right" *matHeaderCellDef>
           <span>Ações</span>
         </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell class="column-150 align-right" *matCellDef="let element">
           <div class="row-button-container">
             <button mat-stroked-button (click)="this.edit(element.id)">
               <span>Editar</span>
