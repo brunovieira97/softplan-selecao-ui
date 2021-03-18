@@ -26,6 +26,7 @@ export class PessoaManutencaoComponent implements OnInit {
     naturalidade: new FormControl(''),
     nacionalidade: new FormControl(''),
     cpf: new FormControl('', DocumentoValidators.cpf),
+    endereco: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -90,6 +91,7 @@ export class PessoaManutencaoComponent implements OnInit {
       naturalidade,
       nacionalidade,
       cpf,
+      endereco,
     } = this.pessoa;
 
     this.formGroup.patchValue({
@@ -100,6 +102,7 @@ export class PessoaManutencaoComponent implements OnInit {
       naturalidade: naturalidade || '',
       nacionalidade: nacionalidade || '',
       cpf: cpf || '',
+      endereco: endereco || '',
     });
   }
 }

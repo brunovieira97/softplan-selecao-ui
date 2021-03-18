@@ -9,4 +9,5 @@ export interface Pessoa {
   cpf?: string;
   dataCriacao?: Date;
   dataAtualizacao?: Date;
+  endereco?: string;
 }
